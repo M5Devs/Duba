@@ -4,6 +4,7 @@
 ![Vanilla JS](https://img.shields.io/badge/javascript-vanilla-yellow.svg)
 ![Dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg)
 ![Offline First](https://img.shields.io/badge/offline--first-100%25-success.svg)
+[![Crowdin](https://badges.crowdin.net/duba/localized.svg)](https://crowdin.com/project/duba)
 
 > **Duba** (دُبى) is an ultra-lightweight, zero-dependency, offline-first web utility designed to convert Unicode code points into characters/emojis and vice-versa. Specifically crafted for restricted environments (e.g., student tablets with Knox restrictions, enterprise kiosks, isolated lab environments) where custom soft-keyboards and emojis are blocked.
 
