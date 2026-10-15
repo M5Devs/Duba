@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="title">Duba - Offline Unicode Converter & Quick Palette</title>
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+        </svg>
+        <div class="brand-text">
+          <h1 data-i18n="headerTitle">Duba</h1>
+          <p data-i18n="headerSubtitle">Offline Unicode Converter & Quick Palette</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <button id="langToggleBtn" class="btn" aria-label="Toggle Language" data-i18n="toggleLang">العربية</button>
+        <button id="themeToggleBtn" class="btn btn-icon-only" aria-label="Toggle Theme" title="Toggle Theme">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Converter Section -->
+    <main class="card">
+      <div class="input-group">
+        <label for="converterInput" data-i18n="inputLabel">Input Character or Code Point</label>
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="converterInput"
+            class="converter-input"
+            placeholder="Enter character (e.g. 😂) or Unicode code (e.g. U+1F600, 1f600)..."
+            data-i18n-placeholder="inputPlaceholder"
+            autocomplete="off"
+            autofocus
+          >
+          <button id="clearInputBtn" class="clear-btn" aria-label="Clear input" style="display: none;">&times;</button>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <h2 class="card-title" data-i18n="outputTitle">Conversion Output</h2>
+        <div class="results-grid">
+          <!-- Big Preview Tile -->
+          <div class="preview-box" id="previewTile" title="Click to copy character">
+            <div id="previewChar" class="preview-char">😀</div>
+            <div class="preview-hint" data-i18n="clickToCopy">Click any value to copy</div>
+          </div>
+
+          <!-- Code Details Grid -->
+          <div class="code-details-grid">
+            <div class="code-card" data-copy-target="unicode">
+              <span class="label" data-i18n="labelUnicode">Unicode Hex</span>
+              <span id="resUnicode" class="value">U+1F600</span>
+            </div>
+            <div class="code-card" data-copy-target="htmlEntity">
+              <span class="label" data-i18n="labelHtml">HTML Entity</span>
+              <span id="resHtml" class="value">&#x1F600;</span>
+            </div>
+            <div class="code-card" data-copy-target="cssEscape">
+              <span class="label" data-i18n="labelCss">CSS Escape</span>
+              <span id="resCss" class="value">\1F600</span>
+            </div>
+            <div class="code-card" data-copy-target="decimal">
+              <span class="label" data-i18n="labelDecimal">Decimal</span>
+              <span id="resDecimal" class="value">128512</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Quick Symbol Palette Section -->
+    <section class="card">
+      <h2 class="card-title" data-i18n="paletteTitle">Quick Symbol Palette</h2>
+
+      <!-- Islamic / Arabic Ligatures -->
+      <div class="palette-category">
+        <h3 class="category-title" data-i18n="catIslamic">Islamic & Arabic</h3>
+        <div class="symbol-grid">
+          <button class="symbol-btn" data-symbol="ﷺ" title="U+FDFA">ﷺ</button>
+          <button class="symbol-btn" data-symbol="ﷻ" title="U+FDFB">ﷻ</button>
+          <button class="symbol-btn" data-symbol="﷽" title="U+FDFD">﷽</button>
+        </div>
+      </div>
+
+      <!-- Math & Science -->
+      <div class="palette-category">
+        <h3 class="category-title" data-i18n="catMath">Math & Science</h3>
+        <div class="symbol-grid">
+          <button class="symbol-btn" data-symbol="π" title="U+03C0">π</button>
+          <button class="symbol-btn" data-symbol="√" title="U+221A">√</button>
+          <button class="symbol-btn" data-symbol="∞" title="U+221E">∞</button>
+          <button class="symbol-btn" data-symbol="≠" title="U+2260">≠</button>
+          <button class="symbol-btn" data-symbol="≈" title="U+2248">≈</button>
+          <button class="symbol-btn" data-symbol="±" title="U+00B1">±</button>
+          <button class="symbol-btn" data-symbol="°" title="U+00B0">°</button>
+          <button class="symbol-btn" data-symbol="Ω" title="U+03A9">Ω</button>
+        </div>
+      </div>
+
+      <!-- Utility & UI -->
+      <div class="palette-category">
+        <h3 class="category-title" data-i18n="catUtility">Utility & UI</h3>
+        <div class="symbol-grid">
+          <button class="symbol-btn" data-symbol="✓" title="U+2713">✓</button>
+          <button class="symbol-btn" data-symbol="✗" title="U+2717">✗</button>
+          <button class="symbol-btn" data-symbol="➔" title="U+2794">➔</button>
+          <button class="symbol-btn" data-symbol="➜" title="U+279C">➜</button>
+          <button class="symbol-btn" data-symbol="©" title="U+00A9">©</button>
+          <button class="symbol-btn" data-symbol="™" title="U+2122">™</button>
+          <button class="symbol-btn" data-symbol="★" title="U+2605">★</button>
+        </div>
+      </div>
+
+      <!-- Common Emojis -->
+      <div class="palette-category">
+        <h3 class="category-title" data-i18n="catEmoji">Common Emojis</h3>
+        <div class="symbol-grid">
+          <button class="symbol-btn" data-symbol="😂" title="U+1F602">😂</button>
+          <button class="symbol-btn" data-symbol="💀" title="U+1F480">💀</button>
+          <button class="symbol-btn" data-symbol="🔥" title="U+1F525">🔥</button>
+          <button class="symbol-btn" data-symbol="❤️" title="U+2764">❤️</button>
+          <button class="symbol-btn" data-symbol="✨" title="U+2728">✨</button>
+          <button class="symbol-btn" data-symbol="🗿" title="U+1F5FF">🗿</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p data-i18n="footerNote">100% Offline • Zero External Dependencies • Privacy Focused</p>
+    </footer>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast" class="toast" role="status" aria-live="polite">Copied to clipboard! ✨</div>
+
+  <!-- Main JavaScript Module -->
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>
